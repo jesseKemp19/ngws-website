@@ -1,14 +1,10 @@
 function injectNavbar(activePage, base) {
-  base = base || '../';
+  base = (base !== undefined) ? base : '../';
   var nav = `
   <nav class="navbar" id="navbar">
     <div class="nav-inner">
-      <a href="${base}index.html" class="nav-logo">
-        <div class="nav-logo-icon">NG</div>
-        <div>
-          <div><span>NextGen</span> Workforce</div>
-          <div style="font-size:0.6rem;font-weight:400;color:var(--text-light);font-family:'DM Mono',monospace;letter-spacing:0.1em">SOLUTIONS</div>
-        </div>
+      <a href="${base}index.html" class="nav-logo" style="gap:12px">
+        <img src="${base}images/NGWS-Logo.png" alt="NextGen Workforce Solutions" class="nav-logo-img" style="height:44px;width:auto">
       </a>
       <div class="nav-links">
         <a href="${base}index.html" ${activePage==='home'?'class="active"':''}>Home</a>
@@ -44,23 +40,21 @@ function injectNavbar(activePage, base) {
     <a href="${base}pages/business-support.html">📦 Business Support</a>
     <a href="${base}pages/resources.html">📰 Resources</a>
     <a href="${base}pages/about.html">ℹ️ About Us</a>
-    <a href="${base}pages/contact.html" class="btn btn-primary" style="margin-top:8px">Get Protected Today</a>
+    <a href="${base}pages/contact.html" class="btn btn-primary" style="margin-top:8px;justify-content:center">Get Protected Today</a>
   </div>`;
   document.body.insertAdjacentHTML('afterbegin', nav);
 }
 
 function injectFooter(base) {
-  base = base || '../';
+  base = (base !== undefined) ? base : '../';
   var footer = `
   <footer class="footer">
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
-          <div class="footer-logo">
-            <div class="footer-logo-icon">NG</div>
-            <div class="footer-logo-text"><span>NextGen</span> Workforce</div>
-          </div>
-          <div class="footer-tagline">SOLUTIONS</div>
+          <a href="${base}index.html" style="display:inline-block;margin-bottom:16px">
+            <img src="${base}images/NGWS-Logo.png" alt="NextGen Workforce Solutions" style="height:48px;width:auto;filter:brightness(0) invert(1)">
+          </a>
           <p>Expert HR consulting, labour law compliance, and polygraph testing for South African businesses. We protect your business so you can focus on growth.</p>
           <div class="footer-social">
             <a href="https://www.youtube.com/@NextGenWF" target="_blank" rel="noopener" title="YouTube">▶</a>
