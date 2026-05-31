@@ -3,8 +3,8 @@ function injectNavbar(activePage, base) {
   var nav = `
   <nav class="navbar" id="navbar">
     <div class="nav-inner">
-      <a href="${base}index.html" class="nav-logo" style="gap:12px">
-        <img src="${base}images/NGWS-Logo.png" alt="NextGen Workforce Solutions" class="nav-logo-img" style="height:44px;width:auto">
+      <a href="${base}index.html" class="nav-logo" style="gap:0">
+        <img src="${base}images/NGWS-Logo.png" alt="NextGen Workforce Solutions" style="height:46px;width:auto;display:block;">
       </a>
       <div class="nav-links">
         <a href="${base}index.html" ${activePage==='home'?'class="active"':''}>Home</a>
@@ -52,8 +52,8 @@ function injectFooter(base) {
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
-          <a href="${base}index.html" style="display:inline-block;margin-bottom:16px;background:white;padding:8px 14px;border-radius:8px;">
-            <img src="${base}images/NGWS-Logo.png" alt="NextGen Workforce Solutions" style="height:36px;width:auto;display:block;">
+          <a href="${base}index.html" style="display:inline-block;margin-bottom:16px;">
+            <img src="${base}images/NGWS-Logo.png" alt="NextGen Workforce Solutions" style="height:52px;width:auto;display:block;filter:brightness(0) invert(1);">
           </a>
           <p>Expert HR consulting, labour law compliance, and polygraph testing for South African businesses. We protect your business so you can focus on growth.</p>
           <div class="footer-social">
