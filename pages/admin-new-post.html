@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>New Article | NGWS Admin</title>
+  <meta name="robots" content="noindex,nofollow">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    body { background: var(--bg-grey); }
+    .admin-layout { display: grid; grid-template-columns: 240px 1fr; min-height: 100vh; }
+    .admin-sidebar { background: var(--navy); padding: 24px; position: sticky; top: 0; height: 100vh; }
+    .admin-sidebar-logo { display: flex; align-items: center; gap: 10px; margin-bottom: 32px; padding-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+    .admin-sidebar-logo-icon { width: 32px; height: 32px; background: var(--blue); border-radius: 6px; display: flex; align-items: center; justify-content: center; color: white; font-weight: 800; font-size: 0.8rem; }
+    .admin-sidebar-logo-text { font-size: 0.95rem; font-weight: 700; color: white; }
+    .admin-sidebar-logo-text span { color: #60A5FA; }
+    .admin-nav a { display: flex; align-items: center; gap: 10px; padding: 10px 14px; color: rgba(255,255,255,0.6); border-radius: 8px; font-size: 0.88rem; margin-bottom: 4px; transition: all var(--transition); }
+    .admin-nav a:hover, .admin-nav a.active { background: rgba(255,255,255,0.1); color: white; }
+    .admin-section-label { font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.3); margin: 20px 0 8px 14px; font-family: 'DM Mono', monospace; }
+    .editor-layout { display: grid; grid-template-columns: 1fr 320px; gap: 24px; }
+    .editor-main { background: var(--white); border-radius: var(--radius-lg); padding: 32px; border: 1px solid var(--border); }
+    .editor-sidebar { display: flex; flex-direction: column; gap: 16px; }
+    .editor-panel { background: var(--white); border-radius: var(--radius-lg); padding: 20px; border: 1px solid var(--border); }
+    .editor-panel h4 { font-size: 0.85rem; color: var(--navy); margin-bottom: 14px; padding-bottom: 10px; border-bottom: 1px solid var(--border); }
+    .admin-content { padding: 32px; overflow-y: auto; }
+    .admin-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; }
+    .admin-header h1 { font-size: 1.4rem; color: var(--navy); }
+    .char-count { font-size: 0.75rem; font-family: 'DM Mono', monospace; color: var(--text-light); text-align: right; margin-top: 4px; }
+    textarea#post-content { min-height: 420px; font-family: 'DM Mono', monospace; font-size: 0.85rem; line-height: 1.7; }
+    .publish-actions { display: flex; flex-direction: column; gap: 10px; }
+    .slug-preview { font-family: 'DM Mono', monospace; font-size: 0.75rem; color: var(--text-light); margin-top: 6px; word-break: break-all; }
+    #logout-btn { width: 100%; padding: 8px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: rgba(255,255,255,0.5); border-radius: 8px; cursor: pointer; font-size: 0.8rem; transition: all var(--transition); }
+    #logout-btn:hover { background: rgba(255,0,0,0.15); color: #FCA5A5; }
+    .sidebar-footer { position: absolute; bottom: 24px; left: 24px; right: 24px; }
+    .user-info { display: flex; align-items: center; gap: 10px; padding: 12px; background: rgba(255,255,255,0.05); border-radius: 8px; margin-bottom: 8px; }
+    .user-avatar { width: 32px; height: 32px; background: var(--blue); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 0.8rem; font-weight: 700; }
+    .user-info span { font-size: 0.85rem; color: rgba(255,255,255,0.7); }
+    @media(max-width:1024px){ .editor-layout{grid-template-columns:1fr} }
+    @media(max-width:768px){ .admin-layout{grid-template-columns:1fr} .admin-sidebar{display:none} }
+  </style>
+</head>
+<body>
+<div class="admin-layout">
+  <aside class="admin-sidebar" style="position:relative">
+    <div class="admin-sidebar-logo">
+      <div class="admin-sidebar-logo-icon">NG</div>
+      <div class="admin-sidebar-logo-text"><span>NextGen</span> Admin</div>
+    </div>
+    <div class="admin-section-label">Content</div>
+    <nav class="admin-nav">
+      <a href="admin-dashboard.html">📊 Dashboard</a>
+      <a href="admin-new-post.html" class="active">✏️ New Article</a>
+    </nav>
+    <div class="admin-section-label">Website</div>
+    <nav class="admin-nav">
+      <a href="../index.html" target="_blank">🌐 View Website</a>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="user-info">
+        <div class="user-avatar">A</div>
+        <span>admin</span>
+      </div>
+      <button id="logout-btn">Sign Out</button>
+    </div>
+  </aside>
+
+  <main class="admin-content">
+    <div class="admin-header">
+      <h1 id="page-heading">New Article</h1>
+      <a href="admin-dashboard.html" style="font-size:0.85rem;color:var(--text-light)">← Back to Dashboard</a>
+    </div>
+
+    <form id="new-post-form">
+      <div class="editor-layout">
+        <!-- MAIN EDITOR -->
+        <div class="editor-main">
+          <div class="form-group">
+            <label>Article Title *</label>
+            <input id="post-title" type="text" placeholder="e.g. Understanding Unfair Dismissal in South Africa" required style="font-size:1.1rem;font-weight:600">
+          </div>
+          <div class="form-group">
+            <label>URL Slug *</label>
+            <input id="post-slug" type="text" placeholder="e.g. understanding-unfair-dismissal-south-africa" required>
+            <div class="slug-preview">Preview: ngws.co.za/pages/resources/<span id="slug-preview-text">your-slug-here</span>.html</div>
+          </div>
+          <div class="form-group">
+            <label>Excerpt / Summary *</label>
+            <textarea id="post-excerpt" rows="3" placeholder="A brief summary that appears on the resources page (120–160 characters recommended)" required></textarea>
+            <div class="char-count"><span id="excerpt-count">0</span> characters</div>
+          </div>
+          <div class="form-group">
+            <label>Article Content *</label>
+            <p style="font-size:0.82rem;color:var(--text-light);margin-bottom:8px">Write your article content below. Use plain text — the site will format it automatically. For headings, start a line with ## (e.g. ## Why This Matters).</p>
+            <textarea id="post-content" placeholder="Write your article content here...&#10;&#10;## Section Heading&#10;Your paragraph text goes here...&#10;&#10;## Another Section&#10;More content..." required></textarea>
+            <div class="char-count"><span id="content-count">0</span> words</div>
+          </div>
+        </div>
+
+        <!-- SIDEBAR PANELS -->
+        <div class="editor-sidebar">
+          <!-- Publish -->
+          <div class="editor-panel">
+            <h4>Publish</h4>
+            <div class="publish-actions">
+              <button type="submit" data-status="published" class="btn btn-primary" style="justify-content:center">Publish Article</button>
+              <button type="submit" data-status="draft" class="btn btn-outline" style="justify-content:center">Save as Draft</button>
+            </div>
+          </div>
+
+          <!-- Category & Meta -->
+          <div class="editor-panel">
+            <h4>Category & SEO</h4>
+            <div class="form-group">
+              <label>Category *</label>
+              <select id="post-category" required>
+                <option value="">Select category...</option>
+                <option>Labour Law</option>
+                <option>HR</option>
+                <option>Polygraph</option>
+                <option>CCMA</option>
+                <option>Employment Equity</option>
+                <option>Compliance</option>
+                <option>Payroll</option>
+                <option>Background Checks</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>SEO Meta Title</label>
+              <input id="post-meta-title" type="text" placeholder="SEO title (50–60 chars)">
+              <div class="char-count"><span id="meta-title-count">0</span>/60</div>
+            </div>
+            <div class="form-group">
+              <label>SEO Meta Description</label>
+              <textarea id="post-meta-desc" rows="3" placeholder="SEO description (120–160 chars)"></textarea>
+              <div class="char-count"><span id="meta-desc-count">0</span>/160</div>
+            </div>
+            <div class="form-group">
+              <label>Target Keyword</label>
+              <input id="post-keyword" type="text" placeholder="e.g. unfair dismissal South Africa">
+            </div>
+            <div class="form-group">
+              <label>Canonical URL</label>
+              <input id="post-canonical" type="text" placeholder="https://ngws.co.za/pages/resources/slug.html">
+            </div>
+          </div>
+
+          <!-- Tips -->
+          <div class="editor-panel" style="background:var(--bg-blue-light);border-color:var(--blue)">
+            <h4 style="color:var(--blue)">💡 Writing Tips</h4>
+            <ul style="display:flex;flex-direction:column;gap:8px;padding-left:16px">
+              <li style="font-size:0.8rem;color:var(--text)">Target 800–1200 words for SEO</li>
+              <li style="font-size:0.8rem;color:var(--text)">Include your keyword in the first paragraph</li>
+              <li style="font-size:0.8rem;color:var(--text)">Use ## for subheadings to break up the text</li>
+              <li style="font-size:0.8rem;color:var(--text)">End with a CTA to contact NGWS</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </form>
+  </main>
+</div>
+
+<script src="../js/main.js"></script>
+<script>
+  // Live character / word counts
+  const slugPreview = document.getElementById('slug-preview-text');
+  document.getElementById('post-slug').addEventListener('input', function() {
+    slugPreview.textContent = this.value || 'your-slug-here';
+  });
+  document.getElementById('post-excerpt').addEventListener('input', function() {
+    document.getElementById('excerpt-count').textContent = this.value.length;
+  });
+  document.getElementById('post-content').addEventListener('input', function() {
+    const words = this.value.trim() ? this.value.trim().split(/\s+/).length : 0;
+    document.getElementById('content-count').textContent = words;
+  });
+  document.getElementById('post-meta-title').addEventListener('input', function() {
+    document.getElementById('meta-title-count').textContent = this.value.length;
+  });
+  document.getElementById('post-meta-desc').addEventListener('input', function() {
+    document.getElementById('meta-desc-count').textContent = this.value.length;
+  });
+
+  // Populate canonical on slug change
+  document.getElementById('post-slug').addEventListener('input', function() {
+    const can = document.getElementById('post-canonical');
+    if (!can.value || can.value.includes('your-slug') || can.dataset.auto !== 'off') {
+      can.value = 'https://ngws.co.za/pages/resources/' + this.value + '.html';
+    }
+  });
+  document.getElementById('post-canonical').addEventListener('input', function() { this.dataset.auto = 'off'; });
+
+  // Edit mode: populate heading
+  if (sessionStorage.getItem('edit_post_index') !== null) {
+    document.getElementById('page-heading').textContent = 'Edit Article';
+    document.title = 'Edit Article | NGWS Admin';
+  }
+</script>
+</body></html>

@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+Disallow: /pages/admin.html
+Disallow: /pages/admin-dashboard.html
+Disallow: /pages/admin-new-post.html
+
+Sitemap: https://ngws.co.za/sitemap.xml

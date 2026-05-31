@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Labour Law & HR Resources | Free Guides for SA Businesses | NGWS</title>
+  <meta name="description" content="Free labour law and HR guides for South African business owners. CCMA process, disciplinary hearings, polygraph testing, employment equity and compliance.">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .resource-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;transition:all var(--transition)}
+    .resource-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-hover);border-color:var(--blue)}
+    .resource-card-img{aspect-ratio:16/9;overflow:hidden;position:relative}
+    .resource-card-img img{width:100%;height:100%;object-fit:cover;transition:transform 0.4s ease}
+    .resource-card:hover .resource-card-img img{transform:scale(1.04)}
+    .resource-category{position:absolute;top:12px;left:12px;background:var(--blue);color:white;font-size:0.72rem;font-weight:700;padding:4px 10px;border-radius:100px;font-family:'DM Mono',monospace}
+    .resource-card-body{padding:24px}
+    .resource-date{font-size:0.75rem;color:var(--text-light);font-family:'DM Mono',monospace;margin-bottom:8px}
+    .resource-card-body h3{font-size:1rem;color:var(--navy);margin-bottom:10px;line-height:1.4}
+    .resource-excerpt{font-size:0.85rem;margin-bottom:16px}
+    #resources-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+    .filter-btn{padding:8px 18px;border:1.5px solid var(--border);border-radius:100px;background:var(--white);cursor:pointer;font-family:'Outfit',sans-serif;font-size:0.85rem;font-weight:500;color:var(--text);transition:all var(--transition)}
+    .filter-btn:hover,.filter-btn.active{background:var(--blue);color:white;border-color:var(--blue)}
+    .filter-bar{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:40px}
+    @media(max-width:768px){#resources-grid{grid-template-columns:1fr}}
+  </style>
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+</head>
+<body>
+<script src="../js/components.js"></script><script>initPage('resources');</script>
+
+<section class="page-hero"><div class="container">
+  <div style="max-width:680px">
+    <div class="breadcrumb"><a href="../index.html">Home</a><span>/</span>Resources</div>
+    <span class="section-label">Free Resources</span>
+    <h1>Labour Law & HR Insights for South African Business Owners</h1>
+    <p>Free guides and articles to help you stay compliant, avoid CCMA claims, and protect your business.</p>
+  </div>
+</div></section>
+
+<section class="section"><div class="container">
+  <div class="filter-bar">
+    <button class="filter-btn active" data-cat="All">All Articles</button>
+    <button class="filter-btn" data-cat="Labour Law">Labour Law</button>
+    <button class="filter-btn" data-cat="HR">HR</button>
+    <button class="filter-btn" data-cat="Polygraph">Polygraph</button>
+    <button class="filter-btn" data-cat="CCMA">CCMA</button>
+    <button class="filter-btn" data-cat="Employment Equity">Employment Equity</button>
+    <button class="filter-btn" data-cat="Compliance">Compliance</button>
+  </div>
+  <div id="resources-grid"></div>
+</div></section>
+
+<section class="cta-band"><div class="container"><h2>Need Personalised Advice?</h2><p>Our articles give you the knowledge — our consultants give you the solution tailored to your business.</p><div class="cta-actions"><a href="contact.html" class="btn btn-white btn-lg">Talk to a Consultant</a><a href="free-hr-audit.html" class="btn btn-outline-white btn-lg">Free HR Audit</a></div></div></section>
+<script src="../js/main.js"></script></body></html>
