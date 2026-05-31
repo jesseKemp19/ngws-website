@@ -4,7 +4,7 @@ function injectNavbar(activePage, base) {
   <nav class="navbar" id="navbar">
     <div class="nav-inner">
       <a href="${base}index.html" class="nav-logo" style="gap:0">
-        <img src="${base}images/NGWS-Logo.png" alt="NextGen Workforce Solutions" style="height:58px;width:auto;display:block;min-width:160px;object-fit:contain;object-position:left center;">
+        <img src="${base}images/NGWS-Logo.png" alt="NextGen Workforce Solutions" style="height:72px;width:auto;display:block;max-width:220px;object-fit:contain;">
       </a>
       <div class="nav-links">
         <a href="${base}index.html" ${activePage==='home'?'class="active"':''}>Home</a>
