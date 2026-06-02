@@ -8,9 +8,34 @@ function injectNavbar(activePage, base) {
       </a>
       <div class="nav-links">
         <a href="${base}index.html" ${activePage==='home'?'class="active"':''}>Home</a>
-        <a href="${base}pages/workforce-solutions.html" ${activePage==='workforce'?'class="active"':''}>Workforce</a>
-        <a href="${base}pages/hr-services.html" ${activePage==='hr'?'class="active"':''}>HR Services</a>
-        <a href="${base}pages/labour-law.html" ${activePage==='labour'?'class="active"':''}>Labour Law</a>
+        <div class="nav-dropdown">
+          <a href="${base}pages/workforce-solutions.html" ${activePage==='workforce'?'class="active"':''}>Workforce ▾</a>
+          <div class="nav-dropdown-menu">
+            <a href="${base}pages/workforce-solutions.html">Workforce Solutions</a>
+            <a href="${base}pages/disciplinary-hearings.html">Disciplinary Hearings</a>
+            <a href="${base}pages/ccma-representation.html">CCMA Representation</a>
+          </div>
+        </div>
+        <div class="nav-dropdown">
+          <a href="${base}pages/hr-services.html" ${activePage==='hr'?'class="active"':''}>HR Services ▾</a>
+          <div class="nav-dropdown-menu">
+            <a href="${base}pages/hr-services.html">HR Services</a>
+            <a href="${base}pages/payroll.html">Payroll</a>
+            <a href="${base}pages/employment-equity.html">Employment Equity</a>
+            <a href="${base}pages/background-checks.html">Background Checks</a>
+            <a href="${base}pages/digital-hr-system.html">Digital HR System</a>
+            <a href="${base}pages/compliance-risk.html">Compliance &amp; Risk</a>
+            <a href="${base}pages/business-support.html">Business Support</a>
+          </div>
+        </div>
+        <div class="nav-dropdown">
+          <a href="${base}pages/labour-law.html" ${activePage==='labour'?'class="active"':''}>Labour Law ▾</a>
+          <div class="nav-dropdown-menu">
+            <a href="${base}pages/labour-law.html">Labour Law Overview</a>
+            <a href="${base}pages/disciplinary-hearings.html">Disciplinary Hearings</a>
+            <a href="${base}pages/ccma-representation.html">CCMA Representation</a>
+          </div>
+        </div>
         <a href="${base}pages/polygraph-testing.html" ${activePage==='poly'?'class="active"':''}>Polygraph</a>
         <a href="${base}pages/resources.html" ${activePage==='resources'?'class="active"':''}>Resources</a>
         <a href="${base}pages/about.html" ${activePage==='about'?'class="active"':''}>About</a>
@@ -99,7 +124,7 @@ function injectFooter(base) {
             <div class="footer-contact-item"><span>📍</span><span>Hesketh Dr, Moreleta Park<br>Pretoria, 0001</span></div>
             <div class="footer-contact-item"><span>📞</span><span><a href="tel:0834064003">083 406 4003</a></span></div>
             <div class="footer-contact-item"><span>✉️</span><span><a href="mailto:info@ngws.co.za">info@ngws.co.za</a><br><a href="mailto:admin@ngws.co.za">admin@ngws.co.za</a></span></div>
-            <div class="footer-contact-item"><span>🕐</span><span>Mon–Fri: 8am – 5pm<br>24hr response</span></div>
+            <div class="footer-contact-item"><span>🕐</span><span>Mon–Thu: 08:00 – 17:00<br>Fri: 08:00 – 14:00<br>24hr response</span></div>
           </div>
         </div>
       </div>
