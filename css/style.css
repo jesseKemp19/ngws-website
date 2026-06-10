@@ -149,6 +149,61 @@ p { color: var(--text-light); line-height: 1.7; }
 .mobile-menu a:hover { color: var(--blue); background: var(--bg-blue-light); }
 .mobile-menu .btn { margin-top: 16px; justify-content: center; }
 
+
+/* ── Mobile Nav Accordion ── */
+.mobile-direct {
+  display: block;
+  padding: 13px 12px;
+  border-bottom: 1px solid var(--border);
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text);
+  transition: color var(--transition), background var(--transition);
+  border-radius: 8px;
+}
+.mobile-direct:hover { color: var(--blue); background: var(--bg-blue-light); }
+.mobile-nav-group { border-bottom: 1px solid var(--border); }
+.mobile-nav-group-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 13px 12px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text);
+  border-radius: 8px;
+  transition: color var(--transition), background var(--transition);
+  user-select: none;
+}
+.mobile-nav-group-title:hover { color: var(--blue); background: var(--bg-blue-light); }
+.mobile-nav-group.open .mobile-nav-group-title { color: var(--blue); }
+.mobile-nav-arrow {
+  font-size: 0.75rem;
+  transition: transform 0.25s ease;
+  display: inline-block;
+  margin-left: 4px;
+}
+.mobile-nav-group.open .mobile-nav-arrow { transform: rotate(180deg); }
+.mobile-nav-submenu {
+  display: none;
+  background: var(--bg-blue-light);
+  border-radius: 8px;
+  margin: 0 4px 8px;
+  overflow: hidden;
+}
+.mobile-nav-group.open .mobile-nav-submenu { display: block; }
+.mobile-nav-submenu a {
+  display: block;
+  padding: 11px 18px;
+  font-size: 0.9rem;
+  color: var(--text);
+  border-bottom: 1px solid var(--border);
+  transition: color var(--transition), background var(--transition);
+}
+.mobile-nav-submenu a:last-child { border-bottom: none; }
+.mobile-nav-submenu a:hover { color: var(--blue); background: rgba(43,95,194,0.08); }
+
 /* ── Mobile menu improvements ── */
 .mobile-menu {
   position: fixed;

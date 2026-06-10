@@ -50,21 +50,42 @@ function injectNavbar(activePage, base) {
     </div>
   </nav>
   <div class="mobile-menu">
-    <a href="${base}index.html">🏠 Home</a>
-    <a href="${base}pages/workforce-solutions.html">⚖️ Workforce Solutions</a>
-    <a href="${base}pages/hr-services.html">👥 HR Services</a>
-    <a href="${base}pages/labour-law.html">📋 Labour Law</a>
-    <a href="${base}pages/disciplinary-hearings.html">🔨 Disciplinary Hearings</a>
-    <a href="${base}pages/ccma-representation.html">🏛️ CCMA Representation</a>
-    <a href="${base}pages/polygraph-testing.html">🔍 Polygraph Testing</a>
-    <a href="${base}pages/employment-equity.html">⚖️ Employment Equity</a>
-    <a href="${base}pages/compliance-risk.html">🛡️ Compliance & Risk</a>
-    <a href="${base}pages/background-checks.html">✅ Background Checks</a>
-    <a href="${base}pages/digital-hr-system.html">💻 Digital HR System</a>
-    <a href="${base}pages/payroll.html">💰 Payroll</a>
-    <a href="${base}pages/business-support.html">📦 Business Support</a>
-    <a href="${base}pages/resources.html">📰 Resources</a>
-    <a href="${base}pages/about.html">ℹ️ About Us</a>
+    <a href="${base}index.html" class="mobile-direct">🏠 Home</a>
+
+    <div class="mobile-nav-group">
+      <div class="mobile-nav-group-title">⚖️ Workforce <span class="mobile-nav-arrow">▾</span></div>
+      <div class="mobile-nav-submenu">
+        <a href="${base}pages/workforce-solutions.html">Workforce Solutions</a>
+        <a href="${base}pages/disciplinary-hearings.html">Disciplinary Hearings</a>
+        <a href="${base}pages/ccma-representation.html">CCMA Representation</a>
+      </div>
+    </div>
+
+    <div class="mobile-nav-group">
+      <div class="mobile-nav-group-title">👥 HR Services <span class="mobile-nav-arrow">▾</span></div>
+      <div class="mobile-nav-submenu">
+        <a href="${base}pages/hr-services.html">HR Services</a>
+        <a href="${base}pages/payroll.html">Payroll</a>
+        <a href="${base}pages/employment-equity.html">Employment Equity</a>
+        <a href="${base}pages/background-checks.html">Background Checks</a>
+        <a href="${base}pages/digital-hr-system.html">Digital HR System</a>
+        <a href="${base}pages/compliance-risk.html">Compliance &amp; Risk</a>
+        <a href="${base}pages/business-support.html">Business Support</a>
+      </div>
+    </div>
+
+    <div class="mobile-nav-group">
+      <div class="mobile-nav-group-title">📋 Labour Law <span class="mobile-nav-arrow">▾</span></div>
+      <div class="mobile-nav-submenu">
+        <a href="${base}pages/labour-law.html">Labour Law Overview</a>
+        <a href="${base}pages/disciplinary-hearings.html">Disciplinary Hearings</a>
+        <a href="${base}pages/ccma-representation.html">CCMA Representation</a>
+      </div>
+    </div>
+
+    <a href="${base}pages/polygraph-testing.html" class="mobile-direct">🔍 Polygraph Testing</a>
+    <a href="${base}pages/resources.html" class="mobile-direct">📰 Resources</a>
+    <a href="${base}pages/about.html" class="mobile-direct">ℹ️ About Us</a>
     <a href="${base}pages/contact.html" class="btn btn-primary" style="margin-top:8px;justify-content:center">Get Protected Today</a>
   </div>`;
   document.body.insertAdjacentHTML('afterbegin', nav);

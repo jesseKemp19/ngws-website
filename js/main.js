@@ -16,6 +16,8 @@ function closeMobileMenu() {
     if (spans[1]) spans[1].style.opacity = '1';
     if (spans[2]) spans[2].style.transform = '';
   }
+  // Also close all accordion groups
+  document.querySelectorAll('.mobile-nav-group.open').forEach(g => g.classList.remove('open'));
 }
 
 hamburger?.addEventListener('click', () => {
@@ -39,6 +41,21 @@ document.addEventListener('click', (e) => {
       !hamburger?.contains(e.target)) {
     closeMobileMenu();
   }
+});
+
+// Mobile accordion submenus
+document.querySelectorAll('.mobile-nav-group-title').forEach(title => {
+  title.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const group = title.closest('.mobile-nav-group');
+    const isOpen = group.classList.contains('open');
+    // Close all other groups
+    document.querySelectorAll('.mobile-nav-group.open').forEach(g => {
+      if (g !== group) g.classList.remove('open');
+    });
+    // Toggle this one
+    group.classList.toggle('open', !isOpen);
+  });
 });
 
 // ─── FADE UP ANIMATIONS ───
