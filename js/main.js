@@ -7,6 +7,17 @@ window.addEventListener('scroll', () => {
 // ─── HAMBURGER MENU ───
 const hamburger = document.querySelector('.hamburger');
 const mobileMenu = document.querySelector('.mobile-menu');
+
+function closeMobileMenu() {
+  mobileMenu?.classList.remove('open');
+  const spans = hamburger?.querySelectorAll('span');
+  if (spans) {
+    if (spans[0]) spans[0].style.transform = '';
+    if (spans[1]) spans[1].style.opacity = '1';
+    if (spans[2]) spans[2].style.transform = '';
+  }
+}
+
 hamburger?.addEventListener('click', () => {
   mobileMenu?.classList.toggle('open');
   const spans = hamburger.querySelectorAll('span');
@@ -14,6 +25,20 @@ hamburger?.addEventListener('click', () => {
   if (spans[0]) spans[0].style.transform = isOpen ? 'rotate(45deg) translate(5px, 5px)' : '';
   if (spans[1]) spans[1].style.opacity = isOpen ? '0' : '1';
   if (spans[2]) spans[2].style.transform = isOpen ? 'rotate(-45deg) translate(5px, -5px)' : '';
+});
+
+// Close mobile menu when a link is tapped
+mobileMenu?.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', closeMobileMenu);
+});
+
+// Close mobile menu when tapping outside
+document.addEventListener('click', (e) => {
+  if (mobileMenu?.classList.contains('open') &&
+      !mobileMenu.contains(e.target) &&
+      !hamburger?.contains(e.target)) {
+    closeMobileMenu();
+  }
 });
 
 // ─── FADE UP ANIMATIONS ───
