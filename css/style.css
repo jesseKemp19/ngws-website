@@ -126,6 +126,15 @@ p { color: var(--text-light); line-height: 1.7; }
   z-index: 200;
   padding: 8px 0;
 }
+/* Invisible bridge over the 8px gap so the menu stays open while the pointer travels from the trigger into it */
+.nav-dropdown-menu::before {
+  content: "";
+  position: absolute;
+  top: -8px;
+  left: 0;
+  right: 0;
+  height: 8px;
+}
 .nav-dropdown:hover .nav-dropdown-menu { display: block; }
 .nav-dropdown-menu a {
   display: block;
